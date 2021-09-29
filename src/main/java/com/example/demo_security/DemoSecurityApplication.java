@@ -3,7 +3,7 @@ package com.example.demo_security;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication //deze zorgt ervoor dat springboot van alles gaat enablen. Hierop moeten we inbreken
+@SpringBootApplication //deze zorgt ervoor dat springboot van alles gaat enablen. Hierop moeten we inbreken. Via class in security package (websecurityconfiguration)
 public class DemoSecurityApplication {
 
 	public static void main(String[] args) {
