@@ -1,6 +1,7 @@
 package com.example.demo_security.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -20,6 +23,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter { //d
     @Autowired
     WebSecurityConfiguration(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    //zet hier je password encoder voor je encrypted passwords
+    @Bean //bean is het resultaat van de encoder wordt opgeslagen in de library van springboot
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     //aanpassen van authentication
